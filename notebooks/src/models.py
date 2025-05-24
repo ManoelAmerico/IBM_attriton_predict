@@ -2,16 +2,7 @@ import numpy as np
 import pandas as pd
 from sklearn.model_selection import cross_validate, GridSearchCV
 from sklearn.pipeline import Pipeline
-from sklearn.metrics import (
-    accuracy_score, 
-    balanced_accuracy_score, 
-    f1_score,
-    precision_score, 
-    recall_score, 
-    roc_auc_score,
-    average_precision_score,
-    classification_report,
-)
+from sklearn.metrics import classification_report, roc_auc_score, average_precision_score
 
 RANDOM_STATE = 42
 
@@ -23,6 +14,7 @@ def build_classification_model_pipeline(classifier, preprocessor=None):
 
     model = pipeline
     return model
+
 
 def train_and_validate_classification_model(
     X,
@@ -53,6 +45,7 @@ def train_and_validate_classification_model(
     )
 
     return scores
+
 
 def classifier_grid_search_cv(
     classifier,
