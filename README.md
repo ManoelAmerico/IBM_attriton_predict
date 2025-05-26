@@ -12,7 +12,7 @@ A perda de talentos é um desafio crítico para qualquer organização. O projet
 
 **English:**
 The project is organized as follows:
-
+```
 .
 ├── notebooks/                  # Contains Jupyter notebooks for analysis and modeling
 │   ├── 1_eda.ipynb             # Notebook for Exploratory Data Analysis (EDA)
@@ -29,11 +29,11 @@ The project is organized as follows:
 ├── models/                     # Saved trained models (e.g., FINAL_MODEL location defined in config.py)
 ├── README.md                   # This file, providing an overview of the project
 └── ...                         # Other project files (e.g., .gitignore, requirements.txt)
-
+```
 
 **Português:**
 O projeto está organizado da seguinte forma:
-
+```
 .
 ├── notebooks/                  # Contém os notebooks Jupyter para análise e modelagem
 │   ├── 1_eda.ipynb             # Notebook para Análise Exploratória de Dados (EDA)
@@ -50,7 +50,7 @@ O projeto está organizado da seguinte forma:
 ├── models/                     # Modelos treinados salvos (ex: localização de FINAL_MODEL definida em config.py)
 ├── README.md                   # Este arquivo, fornecendo uma visão geral do projeto
 └── ...                         # Outros arquivos do projeto (ex: .gitignore, requirements.txt)
-
+```
 ---
 
 ## 🗺️ Data Exploration and Discoveries (EDA) / 🗺️ Exploração e Descobertas dos Dados (EDA)
