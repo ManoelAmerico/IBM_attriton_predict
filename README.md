@@ -8,6 +8,49 @@ Talent loss is a critical challenge for any organization. The **Friction Forecas
 **Português:**
 A perda de talentos é um desafio crítico para qualquer organização. O projeto **Friction Forecast** mergulha nos dados de Recursos Humanos da IBM com o objetivo de não apenas prever a atrição de funcionários, mas também de identificar os principais fatores que levam a essa decisão. Ao entender as causas raízes, podemos munir a IBM com insights para desenvolver estratégias de retenção mais eficazes.
 
+## 📁 Repository Structure / 📁 Estrutura do Repositório
+
+**English:**
+The project is organized as follows:
+
+.
+├── notebooks/                  # Contains Jupyter notebooks for analysis and modeling
+│   ├── 1_eda.ipynb             # Notebook for Exploratory Data Analysis (EDA)
+│   ├── 2_model.ipynb           # Notebook for model development and training
+│   └── src/                    # Source code used by the notebooks
+│       ├── config.py           # Configuration files (e.g., data paths)
+│       ├── graphics.py         # Functions for generating plots
+│       ├── models.py           # Model training and evaluation helper functions
+│       └── utils.py            # Utility functions
+├── data/                       # Directory for datasets
+│   ├── raw/                    # Raw data (e.g., ORIGINAL_DATA location defined in config.py)
+│   └── processed/              # Processed data (e.g., PROCESSED_DATA location defined in config.py)
+├── home.py                     # Main Streamlit application file
+├── models/                     # Saved trained models (e.g., FINAL_MODEL location defined in config.py)
+├── README.md                   # This file, providing an overview of the project
+└── ...                         # Other project files (e.g., .gitignore, requirements.txt)
+
+
+**Português:**
+O projeto está organizado da seguinte forma:
+
+.
+├── notebooks/                  # Contém os notebooks Jupyter para análise e modelagem
+│   ├── 1_eda.ipynb             # Notebook para Análise Exploratória de Dados (EDA)
+│   ├── 2_model.ipynb           # Notebook para desenvolvimento e treinamento do modelo
+│   └── src/                    # Código fonte utilizado pelos notebooks
+│       ├── config.py           # Arquivos de configuração (ex: caminhos dos dados)
+│       ├── graphics.py         # Funções para geração de gráficos
+│       ├── models.py           # Funções auxiliares para treinamento e avaliação de modelos
+│       └── utils.py            # Funções utilitárias
+├── data/                       # Diretório para os conjuntos de dados
+│   ├── raw/                    # Dados brutos (ex: localização de ORIGINAL_DATA definida em config.py)
+│   └── processed/              # Dados processados (ex: localização de PROCESSED_DATA definida em config.py)
+├── home.py                     # Arquivo principal da aplicação Streamlit
+├── models/                     # Modelos treinados salvos (ex: localização de FINAL_MODEL definida em config.py)
+├── README.md                   # Este arquivo, fornecendo uma visão geral do projeto
+└── ...                         # Outros arquivos do projeto (ex: .gitignore, requirements.txt)
+
 ---
 
 ## 🗺️ Data Exploration and Discoveries (EDA) / 🗺️ Exploração e Descobertas dos Dados (EDA)
@@ -24,16 +67,17 @@ Our journey began with a detailed exploratory analysis of IBM's employee dataset
 
   - **Understanding Numerical Features (Histograms & Boxplots):** Our initial exploration involved generating histograms for all 14 numerical features (as seen in cells 19 and 20 of `1_eda.ipynb`). These plots revealed the underlying distributions; for example, `MonthlyIncome` was right-skewed, indicating a larger concentration of employees in lower to mid-income brackets. `HourlyRate`, in contrast, showed a more uniform distribution. Boxplots alongside these provided a concise summary of each feature's spread, central tendency, and potential outliers.
 
-    ![Image of Histograms for Numerical Features](images\histogram_numerical.png)
-    ![Image of Boxplots for Numerical Features](images\boxplot_numerical.png)
+    ![Image of Histograms for Numerical Features](https://github.com/ManoelAmerico/IBM_attriton_predict/blob/main/images/histogram_numerical.png)
+    
+    ![Image of Boxplots for Numerical Features](https://github.com/ManoelAmerico/IBM_attriton_predict/blob/main/images/boxplot_numerical.png)
 
   - **Attrition's Tale in Numbers (Comparative Boxplots):** To draw early connections to attrition, we visualized numerical features against the attrition status (cell 21 of `1_eda.ipynb`). These comparative boxplots offered initial clues. For instance, employees who left the company tended to have, on average, lower `MonthlyIncome`. The `DistanceFromHome` also showed a wider interquartile range for those who attrited, suggesting greater variability in commute for this group.
 
-    ![Image of Comparative Boxplots (Numerical Features vs Attrition)](images\boxplot_numerical_attrition.png)
+    ![Image of Comparative Boxplots (Numerical Features vs Attrition)](https://github.com/ManoelAmerico/IBM_attriton_predict/blob/main/images/boxplot_numerical_attrition.png)
 
   - **Interconnectedness of Features (Correlation Heatmap):** A Pearson correlation heatmap (cell 22 of `1_eda.ipynb`) vividly displayed the relationships between numerical variables. Strong positive correlations were evident, such as between `TotalWorkingYears` and `MonthlyIncome`, and between `YearsAtCompany` and `YearsWithCurrManager`. This also helped us to be mindful of potential multicollinearity when selecting models.
 
-    ![Image of Correlation Heatmap](images\heatmap_correlation.png)
+    ![Image of Correlation Heatmap](https://github.com/ManoelAmerico/IBM_attriton_predict/blob/main/images/heatmap_correlation.png)
 
 **Português:**
 Nossa jornada começou com uma análise exploratória detalhada do conjunto de dados de funcionários da IBM. O objetivo era claro: encontrar padrões e pistas escondidas que pudessem nos contar uma história sobre a atrição.
@@ -47,16 +91,17 @@ Nossa jornada começou com uma análise exploratória detalhada do conjunto de d
 
   - **Entendendo as Variáveis Numéricas (Histogramas e Boxplots):** Nossa exploração inicial envolveu a geração de histogramas para todas as 14 variáveis numéricas (conforme visto nas células 19 e 20 do `1_eda.ipynb`). Esses gráficos revelaram as distribuições subjacentes; por exemplo, `MonthlyIncome` apresentou assimetria à direita, indicando uma maior concentração de funcionários nas faixas de renda mais baixas e médias. `HourlyRate`, em contraste, mostrou uma distribuição mais uniforme. Boxplots complementares forneceram um resumo conciso da dispersão, tendência central e potenciais outliers de cada variável.
 
-    ![Imagem de Histogramas para Variáveis Numéricas](images\histogram_numercial.png)
-    ![Imagem de Boxplots para Variáveis Numéricas](images\boxplot_numerical.png)
+    ![Imagem de Histogramas para Variáveis Numéricas](https://github.com/ManoelAmerico/IBM_attriton_predict/blob/main/images/histogram_numerical.png)
+    
+    ![Imagem de Boxplots para Variáveis Numéricas](https://github.com/ManoelAmerico/IBM_attriton_predict/blob/main/images/boxplot_numerical.png)
 
   - **A História da Atrição em Números (Boxplots Comparativos):** Para traçar conexões iniciais com a atrição, visualizamos as variáveis numéricas em relação ao status de atrição (célula 21 do `1_eda.ipynb`). Esses boxplots comparativos ofereceram pistas iniciais. Por exemplo, funcionários que deixaram a empresa tendiam a ter, em média, menor `MonthlyIncome`. A `DistanceFromHome` também mostrou uma maior amplitude interquartil para aqueles que saíram, sugerindo maior variabilidade no deslocamento para este grupo.
 
-    ![Imagem de Boxplots Comparativos (Variáveis Numéricas vs Atrição)](\images\boxplot_numerical_attrition.png)
+    ![Imagem de Boxplots Comparativos (Variáveis Numéricas vs Atrição)](https://github.com/ManoelAmerico/IBM_attriton_predict/blob/main/images/boxplot_numerical_attrition.png)
 
   - **Interconectividade das Variáveis (Mapa de Calor de Correlação):** Um mapa de calor da correlação de Pearson (célula 22 do `1_eda.ipynb`) exibiu vividamente as relações entre as variáveis numéricas. Fortes correlações positivas foram evidentes, como entre `TotalWorkingYears` e `MonthlyIncome`, e entre `YearsAtCompany` e `YearsWithCurrManager`. Isso também nos ajudou a ter cautela com potencial multicolinearidade ao selecionar modelos.
 
-    ![Imagem de Mapa de Calor de Correlação](images\heatmap_correlation.png)
+    ![Imagem de Mapa de Calor de Correlação](https://github.com/ManoelAmerico/IBM_attriton_predict/blob/main/images/heatmap_correlation.png)
 
 ---
 
@@ -78,7 +123,7 @@ With insights from the EDA, we moved on to building a machine learning model cap
 
 Several classification algorithms were tested using stratified 5-fold cross-validation. The performance of these models was compiled and visualized in a **Model Comparison Box Plot** (generated in cell 15 of `2_model.ipynb`). This plot clearly showed how each model performed across various metrics (Average Precision, ROC AUC, F1-score, Recall, Precision, Accuracy, and Balanced Accuracy). **Logistic Regression** emerged as a strong candidate, particularly due to its robust `test_average_precision` (0.613) and `test_roc_auc` (0.824), which are vital metrics for imbalanced datasets.
 
-![Image of Model Comparison Box Plot](images\boxplot_model.png)
+![Image of Model Comparison Box Plot](https://github.com/ManoelAmerico/IBM_attriton_predict/blob/main/images/boxplot_model.png)
 
 ### 🚀 Optimization and Final Model:
 
@@ -88,7 +133,7 @@ We performed a grid search (`GridSearchCV`) to optimize the hyperparameters of L
 
 To understand what drives attrition according to our best model, we examined its coefficients. A **Coefficient Importance Plot** (generated in cell 28 of `2_model.ipynb`) visually highlighted the most influential features. This plot revealed:
 
-![Image of Coefficient Importance Plot](images\coeffiente_importance.png)
+![Image of Coefficient Importance Plot](https://github.com/ManoelAmerico/IBM_attriton_predict/blob/main/images/coeffiente_importance.png)
 
 - **Factors that INCREASE the likelihood of attrition:**
   - Working **Overtime** (`one_hot__OverTime_Yes`) stood out as the strongest positive predictor.
@@ -118,7 +163,7 @@ Com os insights da EDA, partimos para a construção de um modelo de aprendizado
 
 Diversos algoritmos de classificação foram testados usando validação cruzada estratificada de 5 folds. O desempenho desses modelos foi compilado e visualizado em um **Boxplot de Comparação de Modelos** (gerado na célula 15 do `2_model.ipynb`). Este gráfico mostrou claramente o desempenho de cada modelo em várias métricas (Average Precision, ROC AUC, F1-score, Recall, Precision, Accuracy e Balanced Accuracy). A **Regressão Logística** emergiu como um forte candidato, particularmente devido à sua robusta `test_average_precision` (0.613) e `test_roc_auc` (0.824), que são métricas vitais para conjuntos de dados desbalanceados.
 
-![Imagem de Boxplot de Comparação de Modelos](images\boxplot_model.png)
+![Imagem de Boxplot de Comparação de Modelos](https://github.com/ManoelAmerico/IBM_attriton_predict/blob/main/images/boxplot_model.png)
 
 ### 🚀 Otimização e Modelo Final:
 
@@ -128,7 +173,7 @@ Realizamos uma busca em grade (`GridSearchCV`) para otimizar os hiperparâmetros
 
 Para entender o que impulsiona a atrição de acordo com nosso melhor modelo, examinamos seus coeficientes. Um **Gráfico de Importância dos Coeficientes** (gerado na célula 28 do `2_model.ipynb`) destacou visualmente as variáveis mais influentes. Este gráfico revelou:
 
-![Imagem de Gráfico de Importância dos Coeficientes](images\coeffiente_importance.png)
+![Imagem de Gráfico de Importância dos Coeficientes](https://github.com/ManoelAmerico/IBM_attriton_predict/blob/main/images/coeffiente_importance.png)
 
 - **Fatores que AUMENTAM a probabilidade de atrição:**
   - Trabalhar **Horas Extras** (`one_hot__OverTime_Yes`) destacou-se como o preditor positivo mais forte.
@@ -151,7 +196,7 @@ To make the model's insights actionable, we developed the **Friction Forecast** 
 
 ### Instructions for Use:
 
-1.  **Access the Application:** Open the Streamlit application (usually by running `streamlit run home.py` in your terminal, in the project directory).
+1.  **Access the Application:** [Web IBM Attrition Predict](https://ibm-attriton-predict.onrender.com)
 
 2.  **Fill in Employee Information:**
     The application will present a series of sections to collect employee data. Fill in each field with the corresponding information:
@@ -204,7 +249,7 @@ Para tornar os insights do modelo acionáveis, desenvolvemos o aplicativo web **
 
 ### Instruções de Uso:
 
-1.  **Acesse o Aplicativo:** Abra o aplicativo Streamlit (normalmente executando `streamlit run home.py` no seu terminal, no diretório do projeto).
+1.  **Acesse o Aplicativo:** [Web Predição de atritor IBM](https://ibm-attriton-predict.onrender.com)
 
 2.  **Preencha as Informações do Funcionário:**
     O aplicativo apresentará uma série de seções para coletar dados do funcionário. Preencha cada campo com a informação correspondente:
