@@ -17,12 +17,23 @@ Our journey began with a detailed exploratory analysis of IBM's employee dataset
 
 ### 📊 Key EDA Findings:
 
-- **Attrition Imbalance:** We found that approximately 16.12% of employees in the dataset had left the company, while 83.88% remained. This imbalance is a crucial point to consider in predictive modeling.
-- **Cleaning and Preparation:** We removed irrelevant columns (like `EmployeeCount`, `Over18`, `StandardHours`) and unique identifiers (`EmployeeNumber`) that would not add value to the model. Fortunately, the data proved to be of high quality, with no missing values or duplicates.
-- **Attribute Categorization:** Variables were carefully separated into nominal, ordinal, and numerical to guide subsequent transformations and visualizations.
-- **Distributions and Relationships:**
-  - Through histograms and boxplots, we analyzed the distribution of numerical variables like `MonthlyIncome`, `DistanceFromHome`, and `TotalWorkingYears`, comparing the profiles of employees who left versus those who stayed.
-  - A correlation heatmap allowed us to visualize the relationships between numerical variables, identifying potential multicollinearities and associated factors.
+- **Attrition Imbalance:** We observed that approximately 16.12% of employees in the dataset had left the company, while 83.88% remained. This imbalance is a crucial point to consider in predictive modeling.
+- **Cleaning and Preparation:** We streamlined the dataset by removing columns that offered no predictive value, such as `EmployeeCount`, `Over18`, and `StandardHours` (which had identical values for all employees), and the unique identifier `EmployeeNumber`. Importantly, our data was high quality, with no missing values or duplicate records found.
+- **Attribute Categorization:** Variables were carefully classified into nominal (e.g., `Department`), ordinal (e.g., `Education`), and numerical (e.g., `MonthlyIncome`) types to guide appropriate analysis and transformation.
+- **Visual Insights from Data Distributions and Relationships:**
+
+  - **Understanding Numerical Features (Histograms & Boxplots):** Our initial exploration involved generating histograms for all 14 numerical features (as seen in cells 19 and 20 of `1_eda.ipynb`). These plots revealed the underlying distributions; for example, `MonthlyIncome` was right-skewed, indicating a larger concentration of employees in lower to mid-income brackets. `HourlyRate`, in contrast, showed a more uniform distribution. Boxplots alongside these provided a concise summary of each feature's spread, central tendency, and potential outliers.
+
+    ![Image of Histograms for Numerical Features](images\histogram_numerical.png)
+    ![Image of Boxplots for Numerical Features](images\boxplot_numerical.png)
+
+  - **Attrition's Tale in Numbers (Comparative Boxplots):** To draw early connections to attrition, we visualized numerical features against the attrition status (cell 21 of `1_eda.ipynb`). These comparative boxplots offered initial clues. For instance, employees who left the company tended to have, on average, lower `MonthlyIncome`. The `DistanceFromHome` also showed a wider interquartile range for those who attrited, suggesting greater variability in commute for this group.
+
+    ![Image of Comparative Boxplots (Numerical Features vs Attrition)](images\boxplot_numerical_attrition.png)
+
+  - **Interconnectedness of Features (Correlation Heatmap):** A Pearson correlation heatmap (cell 22 of `1_eda.ipynb`) vividly displayed the relationships between numerical variables. Strong positive correlations were evident, such as between `TotalWorkingYears` and `MonthlyIncome`, and between `YearsAtCompany` and `YearsWithCurrManager`. This also helped us to be mindful of potential multicollinearity when selecting models.
+
+    ![Image of Correlation Heatmap](images\heatmap_correlation.png)
 
 **Português:**
 Nossa jornada começou com uma análise exploratória detalhada do conjunto de dados de funcionários da IBM. O objetivo era claro: encontrar padrões e pistas escondidas que pudessem nos contar uma história sobre a atrição.
@@ -30,36 +41,22 @@ Nossa jornada começou com uma análise exploratória detalhada do conjunto de d
 ### 📊 Principais Achados da EDA:
 
 - **Desbalanceamento da Atrição:** Constatamos que aproximadamente 16,12% dos funcionários no dataset deixaram a empresa, enquanto 83,88% permaneceram. Esse desbalanceamento é um ponto crucial a ser considerado na modelagem preditiva.
-- **Limpeza e Preparação:** Removemos colunas irrelevantes (como `EmployeeCount`, `Over18`, `StandardHours`) e identificadores únicos (`EmployeeNumber`) que não agregariam valor ao modelo. Felizmente, os dados se mostraram de alta qualidade, sem valores ausentes ou duplicatas.
-- **Categorização de Atributos:** As variáveis foram cuidadosamente separadas em nominais, ordinais e numéricas para guiar as transformações e visualizações subsequentes.
-- **Distribuições e Relações:**
-  - Através de histogramas e boxplots, analisamos a distribuição de variáveis numéricas como `MonthlyIncome`, `DistanceFromHome` e `TotalWorkingYears`, comparando os perfis de funcionários que saíram versus os que ficaram.
-  - Um mapa de calor de correlação nos permitiu visualizar as relações entre as variáveis numéricas, identificando potenciais multicollinearidades e fatores associados.
+- **Limpeza e Preparação:** Otimizamos o conjunto de dados removendo colunas que não ofereciam valor preditivo, como `EmployeeCount`, `Over18` e `StandardHours` (que possuíam valores idênticos para todos os funcionários), e o identificador único `EmployeeNumber`. Importante destacar que nossos dados se mostraram de alta qualidade, sem valores ausentes ou registros duplicados.
+- **Categorização de Atributos:** As variáveis foram cuidadosamente classificadas em nominais (ex: `Department`), ordinais (ex: `Education`) e numéricas (ex: `MonthlyIncome`) para guiar análises e transformações apropriadas.
+- **Insights Visuais das Distribuições e Relações dos Dados:**
 
-### 📈 Interactive Dashboard and Graphics (Illustrative Example) / 📈 Painel Interativo e Gráficos (Exemplo Ilustrativo)
+  - **Entendendo as Variáveis Numéricas (Histogramas e Boxplots):** Nossa exploração inicial envolveu a geração de histogramas para todas as 14 variáveis numéricas (conforme visto nas células 19 e 20 do `1_eda.ipynb`). Esses gráficos revelaram as distribuições subjacentes; por exemplo, `MonthlyIncome` apresentou assimetria à direita, indicando uma maior concentração de funcionários nas faixas de renda mais baixas e médias. `HourlyRate`, em contraste, mostrou uma distribuição mais uniforme. Boxplots complementares forneceram um resumo conciso da dispersão, tendência central e potenciais outliers de cada variável.
 
-_(This section describes what dashboards and graphics would ideally show. Please replace with your actual visuals or links.)_
-_(Esta seção descreve o que os painéis e gráficos idealmente mostrariam. Por favor, substitua com seus visuais reais ou links.)_
+    ![Imagem de Histogramas para Variáveis Numéricas](images\histogram_numercial.png)
+    ![Imagem de Boxplots para Variáveis Numéricas](images\boxplot_numerical.png)
 
-**English:**
-An interactive dashboard would complement our EDA, allowing for dynamic exploration of the data. We could visualize:
+  - **A História da Atrição em Números (Boxplots Comparativos):** Para traçar conexões iniciais com a atrição, visualizamos as variáveis numéricas em relação ao status de atrição (célula 21 do `1_eda.ipynb`). Esses boxplots comparativos ofereceram pistas iniciais. Por exemplo, funcionários que deixaram a empresa tendiam a ter, em média, menor `MonthlyIncome`. A `DistanceFromHome` também mostrou uma maior amplitude interquartil para aqueles que saíram, sugerindo maior variabilidade no deslocamento para este grupo.
 
-- **Attrition Rate by Department:** A bar chart showing which department has the highest turnover rate.
-- **Monthly Income vs. Attrition:** Boxplots comparing salary distribution between the groups.
-- **Overtime and Attrition:** A chart showing the proportion of employees who work overtime and leave the company.
-- **Job Satisfaction:** Pie or bar charts illustrating the satisfaction levels of employees who stayed and those who left.
+    ![Imagem de Boxplots Comparativos (Variáveis Numéricas vs Atrição)](\images\boxplot_numerical_attrition.png)
 
-These visualizations would help solidify insights and effectively communicate findings to stakeholders.
+  - **Interconectividade das Variáveis (Mapa de Calor de Correlação):** Um mapa de calor da correlação de Pearson (célula 22 do `1_eda.ipynb`) exibiu vividamente as relações entre as variáveis numéricas. Fortes correlações positivas foram evidentes, como entre `TotalWorkingYears` e `MonthlyIncome`, e entre `YearsAtCompany` e `YearsWithCurrManager`. Isso também nos ajudou a ter cautela com potencial multicolinearidade ao selecionar modelos.
 
-**Português:**
-Um painel interativo complementaria nossa EDA, permitindo uma exploração dinâmica dos dados. Poderíamos visualizar:
-
-- **Taxa de Atrição por Departamento:** Um gráfico de barras mostrando qual departamento tem a maior taxa de evasão.
-- **Renda Mensal vs. Atrição:** Boxplots comparando a distribuição salarial entre os grupos.
-- **Horas Extras e Atrição:** Um gráfico mostrando a proporção de funcionários que fazem horas extras e saem da empresa.
-- **Satisfação no Trabalho:** Gráficos de pizza ou barras ilustrando os níveis de satisfação dos funcionários que ficaram e dos que saíram.
-
-Essas visualizações ajudariam a solidificar os insights e a comunicar as descobertas de forma eficaz para as partes interessadas.
+    ![Imagem de Mapa de Calor de Correlação](images\heatmap_correlation.png)
 
 ---
 
@@ -70,88 +67,80 @@ With insights from the EDA, we moved on to building a machine learning model cap
 
 ### 🛠️ Data Preparation for Modeling:
 
-- **Target Variable Encoding:** The `Attrition` variable was transformed from categorical ("Yes"/"No") to numerical (1/0).
-- **Feature Engineering and Preprocessing:** We applied specific transformations for each type of variable:
-  - `OneHotEncoder` for nominal variables.
-  - `OrdinalEncoder` for ordinal variables.
-  - `MinMaxScaler`, `StandardScaler`, and `PowerTransformer` for different sets of numerical variables to optimize model performance.
+- **Target Variable Encoding:** The `Attrition` variable was transformed from categorical ("Yes"/"No") to numerical (1/0) using `LabelEncoder`.
+- **Feature Engineering and Preprocessing:** We applied specific transformations for each type of variable using `ColumnTransformer`:
+  - `OneHotEncoder` for nominal variables (e.g., `Department`, `Gender`).
+  - `OrdinalEncoder` for ordinal variables (e.g., `Education`, `JobSatisfaction`).
+  - `MinMaxScaler` for numerical features like `DailyRate`, `StandardScaler` for `Age`, and `PowerTransformer` for others like `MonthlyIncome` and `DistanceFromHome` to optimize model performance by normalizing their distributions.
 - **Handling Imbalance:** We calculated `scale_pos_weight` (approximately 5.2) so that models would give due importance to the minority class (attrited employees), especially for algorithms like XGBoost and LightGBM.
 
 ### 🧠 Model Selection and Evaluation:
 
-Several classification algorithms were tested, including:
+Several classification algorithms were tested using stratified 5-fold cross-validation. The performance of these models was compiled and visualized in a **Model Comparison Box Plot** (generated in cell 15 of `2_model.ipynb`). This plot clearly showed how each model performed across various metrics (Average Precision, ROC AUC, F1-score, Recall, Precision, Accuracy, and Balanced Accuracy). **Logistic Regression** emerged as a strong candidate, particularly due to its robust `test_average_precision` (0.613) and `test_roc_auc` (0.824), which are vital metrics for imbalanced datasets.
 
-- Dummy Classifier (baseline)
-- Logistic Regression
-- Decision Tree
-- Gradient Boosting
-- LGBM Classifier
-- XGBoost
-
-We used stratified cross-validation to ensure the robustness of the results. **Logistic Regression** showed the best initial performance in terms of `test_average_precision` (0.613) and `test_roc_auc` (0.824).
+![Image of Model Comparison Box Plot](images\boxplot_model.png)
 
 ### 🚀 Optimization and Final Model:
 
-We performed a grid search (`GridSearchCV`) to optimize the hyperparameters of Logistic Regression. The final model, with parameters `{'clf__C': 0.1, 'clf__l1_ratio': 0.5, 'clf__penalty': 'elasticnet'}`, achieved an **average_precision of approximately 0.635**.
+We performed a grid search (`GridSearchCV`) to optimize the hyperparameters of Logistic Regression, focusing on `average_precision` as the refit metric. The final model, with parameters `{'clf__C': 0.1, 'clf__l1_ratio': 0.5, 'clf__penalty': 'elasticnet'}`, achieved an **average_precision of approximately 0.635**.
 
 ### 🔑 Key Predictive Factors (Based on Logistic Regression Coefficients):
 
-The coefficients of the final model revealed the most significant drivers of attrition:
+To understand what drives attrition according to our best model, we examined its coefficients. A **Coefficient Importance Plot** (generated in cell 28 of `2_model.ipynb`) visually highlighted the most influential features. This plot revealed:
+
+![Image of Coefficient Importance Plot](images\coeffiente_importance.png)
 
 - **Factors that INCREASE the likelihood of attrition:**
-  - Working **Overtime** (`OverTime_Yes`)
-  - **Frequent Business Travel** (`BusinessTravel_Travel_Frequently`)
-  - Being **Single** (`MaritalStatus_Single`)
-  - Number of **Previous Companies Worked**
+  - Working **Overtime** (`one_hot__OverTime_Yes`) stood out as the strongest positive predictor.
+  - **Frequent Business Travel** (`one_hot__BusinessTravel_Travel_Frequently`).
+  - Being **Single** (`one_hot__MaritalStatus_Single`).
+  - Higher number of **Previous Companies Worked** (`power_transform__NumCompaniesWorked`).
 - **Factors that DECREASE the likelihood of attrition:**
-  - High **Job Involvement** (`Ordinal__JobInvolvement`)
-  - Higher **Monthly Income** (`power_transform__MonthlyIncome`)
-  - Higher **Environment Satisfaction** (`Ordinal__EnvironmentSatisfaction`)
-  - Being in the **Research & Development** department
+  - High **Job Involvement** (`Ordinal__JobInvolvement`) was the most significant factor in retaining employees.
+  - Higher **Monthly Income** (`power_transform__MonthlyIncome`).
+  - Greater **Environment Satisfaction** (`Ordinal__EnvironmentSatisfaction`).
+  - Being in the **Research & Development** department (`one_hot__Department_Research & Development`).
+  - Higher **Job Satisfaction** (`Ordinal__JobSatisfaction`).
 
 **Português:**
 Com os insights da EDA, partimos para a construção de um modelo de aprendizado de máquina capaz de prever a atrição.
 
 ### 🛠️ Preparação dos Dados para Modelagem:
 
-- **Codificação da Variável Alvo:** A variável `Attrition` foi transformada de categórica ("Yes"/"No") para numérica (1/0).
-- **Engenharia de Atributos e Pré-processamento:** Aplicamos transformações específicas para cada tipo de variável:
-  - `OneHotEncoder` para variáveis nominais.
-  - `OrdinalEncoder` para variáveis ordinais.
-  - `MinMaxScaler`, `StandardScaler` e `PowerTransformer` para diferentes conjuntos de variáveis numéricas, visando otimizar o desempenho dos modelos.
+- **Codificação da Variável Alvo:** A variável `Attrition` foi transformada de categórica ("Yes"/"No") para numérica (1/0) usando `LabelEncoder`.
+- **Engenharia de Atributos e Pré-processamento:** Aplicamos transformações específicas para cada tipo de variável usando `ColumnTransformer`:
+  - `OneHotEncoder` para variáveis nominais (ex: `Department`, `Gender`).
+  - `OrdinalEncoder` para variáveis ordinais (ex: `Education`, `JobSatisfaction`).
+  - `MinMaxScaler` para variáveis numéricas como `DailyRate`, `StandardScaler` para `Age`, e `PowerTransformer` para outras como `MonthlyIncome` e `DistanceFromHome`, visando otimizar o desempenho dos modelos normalizando suas distribuições.
 - **Tratamento de Desbalanceamento:** Calculamos o `scale_pos_weight` (aproximadamente 5.2) para que os modelos dessem a devida importância à classe minoritária (funcionários com atrição), especialmente para algoritmos como XGBoost e LightGBM.
 
 ### 🧠 Seleção e Avaliação de Modelos:
 
-Diversos algoritmos de classificação foram testados, incluindo:
+Diversos algoritmos de classificação foram testados usando validação cruzada estratificada de 5 folds. O desempenho desses modelos foi compilado e visualizado em um **Boxplot de Comparação de Modelos** (gerado na célula 15 do `2_model.ipynb`). Este gráfico mostrou claramente o desempenho de cada modelo em várias métricas (Average Precision, ROC AUC, F1-score, Recall, Precision, Accuracy e Balanced Accuracy). A **Regressão Logística** emergiu como um forte candidato, particularmente devido à sua robusta `test_average_precision` (0.613) e `test_roc_auc` (0.824), que são métricas vitais para conjuntos de dados desbalanceados.
 
-- Dummy Classifier (linha de base)
-- Regressão Logística
-- Árvore de Decisão
-- Gradient Boosting
-- LGBM Classifier
-- XGBoost
-
-Utilizamos validação cruzada estratificada para garantir a robustez dos resultados. A **Regressão Logística** apresentou o melhor desempenho inicial em termos de `test_average_precision` (0.613) e `test_roc_auc` (0.824).
+![Imagem de Boxplot de Comparação de Modelos](images\boxplot_model.png)
 
 ### 🚀 Otimização e Modelo Final:
 
-Realizamos uma busca em grade (`GridSearchCV`) para otimizar os hiperparâmetros da Regressão Logística. O modelo final, com os parâmetros `{'clf__C': 0.1, 'clf__l1_ratio': 0.5, 'clf__penalty': 'elasticnet'}`, alcançou uma **average_precision de aproximadamente 0.635**.
+Realizamos uma busca em grade (`GridSearchCV`) para otimizar os hiperparâmetros da Regressão Logística, focando em `average_precision` como métrica de reajuste. O modelo final, com os parâmetros `{'clf__C': 0.1, 'clf__l1_ratio': 0.5, 'clf__penalty': 'elasticnet'}`, alcançou uma **average_precision de aproximadamente 0.635**.
 
 ### 🔑 Principais Fatores Preditivos (Baseado nos Coeficientes da Regressão Logística):
 
-Os coeficientes do modelo final nos revelaram os impulsionadores mais significativos da atrição:
+Para entender o que impulsiona a atrição de acordo com nosso melhor modelo, examinamos seus coeficientes. Um **Gráfico de Importância dos Coeficientes** (gerado na célula 28 do `2_model.ipynb`) destacou visualmente as variáveis mais influentes. Este gráfico revelou:
+
+![Imagem de Gráfico de Importância dos Coeficientes](images\coeffiente_importance.png)
 
 - **Fatores que AUMENTAM a probabilidade de atrição:**
-  - Trabalhar **Horas Extras** (`OverTime_Yes`)
-  - **Viagens de Negócios Frequentes** (`BusinessTravel_Travel_Frequently`)
-  - Ser **Solteiro** (`MaritalStatus_Single`)
-  - **Número de Empresas Anteriores**
+  - Trabalhar **Horas Extras** (`one_hot__OverTime_Yes`) destacou-se como o preditor positivo mais forte.
+  - **Viagens de Negócios Frequentes** (`one_hot__BusinessTravel_Travel_Frequently`).
+  - Ser **Solteiro** (`one_hot__MaritalStatus_Single`).
+  - Maior número de **Empresas Anteriores Trabalhadas** (`power_transform__NumCompaniesWorked`).
 - **Fatores que DIMINUEM a probabilidade de atrição:**
-  - Alto **Envolvimento no Trabalho** (`Ordinal__JobInvolvement`)
-  - Maior **Renda Mensal** (`power_transform__MonthlyIncome`)
-  - Maior **Satisfação com o Ambiente** (`Ordinal__EnvironmentSatisfaction`)
-  - Estar no departamento de **Pesquisa & Desenvolvimento**
+  - Alto **Envolvimento no Trabalho** (`Ordinal__JobInvolvement`) foi o fator mais significativo na retenção de funcionários.
+  - Maior **Renda Mensal** (`power_transform__MonthlyIncome`).
+  - Maior **Satisfação com o Ambiente** (`Ordinal__EnvironmentSatisfaction`).
+  - Estar no departamento de **Pesquisa & Desenvolvimento** (`one_hot__Department_Research & Development`).
+  - Maior **Satisfação no Trabalho** (`Ordinal__JobSatisfaction`).
 
 ---
 
